@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好久不见</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #080808;
+  color: #b9b9b9;
+  font-family: Consolas, monospace;
+  padding: 40px 20px;
+  line-height: 1.8;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+.page{display:none;}
+.page.active{display:block;}
+.title {
+  color: #884444;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  animation: shakeTitle 4s infinite ease-in-out;
+}
+.content {
+  font-size: 15px;
+  white-space: pre-wrap;
+  position: relative;
+}
+.shake-text {
+  animation: textShake 3.5s infinite;
+}
+.flash-red {
+  color: #bb5050;
+  animation: flashRed 2.2s infinite alternate;
+}
+.cover-black {
+  background: #000;
+  color: #000;
+  padding: 0 3px;
+  user-select: none;
+}
+.choose-box {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #332222;
+  background: #0a0a0a;
+  animation: faintFlash 5s infinite;
+}
+.choose-box p {
+  margin: 8px 0;
+  color: #997777;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.choose-box p:hover{color:#cc6666;transform:translateX(3px);}
+/* 随机诡异乱码 */
+.garbage-code{
+  position: fixed;
+  color:#552222;
+  pointer-events:none;
+  font-size:10px;
+  z-index:998;
+  opacity:0;
+}
+@keyframes textShake {
+  0%,100% { transform: translate(0px,0px) skew(0deg,0deg); }
+  25% { transform: translate(0.5px,1px) skew(0.5deg,0deg); }
+  50% { transform: translate(-1px,0.5px) skew(-0.5deg,0.3deg); }
+  75% { transform: translate(1px,-0.5px) skew(0.2deg,-0.2deg); }
+}
+@keyframes shakeTitle {
+  0%,100% { opacity: 0.9; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(1px); }
+}
+@keyframes flashRed {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+@keyframes faintFlash {
+  0%,100% { box-shadow: none; }
+  50% { box-shadow: 0 0 8px #66222233; }
+}
+.flash-dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: #000;
+  opacity: 0;
+  z-index: 999;
+}
+</style>
+</head>
+<body>
+<div class="flash-dark" id="flashDark"></div>
+<div class="container">
+
+<!-- 第1页 起始页 -->
+<div class="page active" id="page1">
+  <h2 class="title">真是……有点想你了</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（大量字迹反复涂抹、擦除、重写）</span>
+  
+  好久不见。
+  真的、好久没有见到你了。
+
+  我不敢主动找你
+  因为万一你早就不想和我一起玩了？
+  怕我太烦、太黏人、太自作多情
+
+  你最近……在忙什么呀？
+
+  <span class="flash-red">我每天都习惯性看一眼你那边</span>
+  你愿意把视线投到我身上吗
+  世界很热闹，纷争前线也好吵闹
+  可我找不到可以一起发呆的人
+  </div>
+  <div class="choose-box shake-text">
+    <p onclick="goPage(2)">▸ 纷争前线 打PVP</p>
+    <p onclick="goPage(2)">▸ 无尽钓鱼 蹲鱼种</p>
+    <p onclick="goPage(2)">▸ 高难副本 开荒渡劫</p>
+    <p onclick="goPage(2)">▸ 挖宝跑图 摸彩票</p>
+    <p onclick="goPage(2)">▸ 房屋装修 摆家具</p>
+    <p onclick="goPage(2)">▸ 收集宠物 坐骑外观</p>
+    <p onclick="goPage(2)">▸ 独自逛地图 看风景</p>
+    <p onclick="goPage(8)">▸ 已经不玩了，早就退坑了</p>
+  </div>
+</div>
+
+<!-- 第2页 -->
+<div class="page" id="page2">
+  <h2 class="title">所以……是故意避开我吗</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（字迹开始扭曲歪斜）</span>
+  原来你一直都在艾欧泽亚。
+  只是从来不想上线找我。
+
+  是我哪里做错了吗？
+  是不是我一直缠着你
+  让你觉得很压抑、很麻烦？
+
+  <span class="flash-red">我连问一句的勇气都没有</span>
+  只能蹲在主城角落等你路过
+  可你从来不会看向我这边
+  </div>
+  <div class="choose-box shake-text">
+    <p onclick="goPage(3)">▸ 只是单纯忙，没有避开你</p>
+    <p onclick="goPage(9)">▸ 确实不太想一起玩了</p>
+    <p onclick="goPage(3)">▸ 只是不想被人打扰</p>
+    <p onclick="goPage(3)">▸ 我没注意到你</p>
+  </div>
+</div>
+
+<!-- 第3页 -->
+<div class="page" id="page3">
+  <h2 class="title">果然……是我的问题对不对</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（墨水晕开，字迹断断续续）</span>
+  是不是我太没用了？
+  打本反应慢、操作笨、话太多
+  跟不上你的脚步。
+
+  我总回忆以前一起的日子
+  前线并肩、雨天钓鱼、开荒犯错你包容我
+
+  <span class="flash-red">我是不是本来就不配靠近你</span>
+  </div>
+  <div class="choose-box shake-text">
+    <p onclick="goPage(4)">▸ 没有，你很好</p>
+    <p onclick="goPage(9)">▸ 你确实有点太敏感了</p>
+    <p onclick="goPage(4)">▸ 别这么贬低自己</p>
+  </div>
+</div>
+
+<!-- 第4页 -->
+<div class="page" id="page4">
+  <h2 class="title">我一直在偷偷盯着你的头像</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（划痕越来越多）</span>
+  灰掉的图标我看了无数个夜晚。
+  艾欧泽亚那么大，我却只盯着你的位置。
+
+  哪怕只是偶遇一次
+  我都能开心一整天。
+  可你好像彻底把我隔绝在外了。
+
+  <span class="flash-red">是不是我连想念都很廉价</span>
+  </div>
+  <div class="choose-box shake-text">
+    <p onclick="goPage(5)">▸ 你没必要这么卑微</p>
+    <p onclick="goPage(9)">▸ 只是游戏而已</p>
+    <p onclick="goPage(5)">▸ 我知道你很难过</p>
+  </div>
+</div>
+
+<!-- 第5页 -->
+<div class="page" id="page5">
+  <h2 class="title">可我只有艾欧泽亚的回忆了</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（纸面开始出现不明划痕乱码）</span>
+  现实很无聊，只有和你的游戏时光有温度。
+  我不敢奢求太多，一点点陪伴就够。
+
+  为什么连这点温柔都不肯留给我。
+
+  <span class="flash-red">我快要分不清游戏和现实了</span>
+  </div>
+  <div class="choose-box shake-text">
+    <p onclick="goPage(10)">▸ 会好起来的</p>
+    <p onclick="goPage(9)">▸ 放下吧</p>
+    <p onclick="goPage(6)">▸ 我愿意回来陪你</p>
+  </div>
+</div>
+
+<!-- 结局1：温柔救赎结局 -->
+<div class="page" id="page6">
+  <h2 class="title">终于……你愿意回头看看我了</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（涂改痕迹慢慢变淡）</span>
+  原来我没有被彻底丢掉。
+
+  不用频繁上线、不用开荒、不用上分
+  只要你愿意偶尔来艾欧泽亚找我。
+
+  一起看晚霞、蹲雨天鱼、站在主城发呆
+  我就已经足够知足。
+
+  <span class="flash-red">谢谢你，没有丢下我</span>
+  至少在这片大陆，我还有一点点归属。
+  </div>
+</div>
+
+<!-- 分支：直接退坑 → 心碎前置 -->
+<div class="page" id="page8">
+  <h2 class="title">原来你彻底离开这里了</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（整片字迹疯狂涂改撕裂）</span>
+  连艾欧泽亚都留不住你。
+
+  我守着我们所有回忆
+  守着空无一人的副本、钓鱼点、街道。
+
+  <span class="flash-red">整个世界只剩我一个人了</span>
+  </div>
+  <div class="choose-box shake-text">
+    <p onclick="goPage(9)">▸ 那你也慢慢忘记吧</p>
+    <p onclick="goPage(10)">▸ 就算退坑我也记得你</p>
+  </div>
+</div>
+
+<!-- 结局2：彻底心碎悲剧结局 -->
+<div class="page" id="page9">
+  <h2 class="title">我好像……早就该认清现实</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（大量涂黑、乱码侵入文字）</span>
+  是我一直死抓着不放。
+  是我太偏执、太廉价、太惹人厌烦。
+
+  艾欧泽亚的风再也不会吹向我了
+  所有开心都是我自作多情的幻想。
+
+  <span class="flash-red">以后我不会再打扰你了</span>
+  一个人在大陆腐烂就好。
+  </div>
+</div>
+
+<!-- 结局3：偏执沉默留白结局 -->
+<div class="page" id="page10">
+  <h2 class="title">我会一直等，无声无息的等</h2>
+  <div class="content shake-text">
+  <span class="cover-black">（字迹变淡，混入神秘乱码）</span>
+  我不会再频繁打扰你。
+  不发消息、不追问、不纠缠。
+
+  我会一直留在艾欧泽亚。
+  无论你回不回来。
+
+  <span class="flash-red">我的想念永远藏在黑影里</span>
+  安静等着，直到永远。
+  </div>
+</div>
+
+</div>
+
+<audio id="stepAudio" loop preload="auto">
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-quiet-footsteps-in-a-corridor-1271.mp3" type="audio/mpeg">
+
+<script>
+// 页面跳转
+function goPage(num){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page'+num).classList.add('active');
+}
+// 随机诡异乱码符号
+const garbageStr = "§¶‡‰∆¬¥×÷@#&*☒☹☠⁂⁑";
+function createGarbage(){
+  let el = document.createElement('div');
+  el.className="garbage-code";
+  el.innerText = garbageStr[Math.floor(Math.random()*garbageStr.length)];
+  el.style.left = Math.random()*100+"vw";
+  el.style.top = Math.random()*100+"vh";
+  document.body.appendChild(el);
+  setTimeout(()=>el.style.opacity="0.3",100);
+  setTimeout(()=>el.remove(),1200);
+}
+setInterval(createGarbage,1200);
+
+// 暗黑闪屏
+const darkDom = document.getElementById('flashDark');
+setInterval(()=>{
+  let r = Math.random();
+  if(r > 0.92){
+    darkDom.style.opacity = '0.25';
+    setTimeout(()=>darkDom.style.opacity='0',80)
+  }
+},2200)
+// 脚步声
+const audio = document.getElementById('stepAudio');
+document.addEventListener('click',()=>{
+  audio.volume = 0.15;
+  audio.play();
+},{once:true})
+// 全局细微抖动
+setInterval(()=>{
+  let r = Math.random();
+  if(r>0.85){
+    document.body.style.transform = 'translateX(1px)';
+    setTimeout(()=>document.body.style.transform='none',40)
+  }
+},1200)
+</script>
+</body>
+</html>
